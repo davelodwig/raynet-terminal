@@ -1,0 +1,826 @@
+{
+  "configuration" : { },
+  "description" : "A low latency, radio logging and messaging solution",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedAgent" : "structurizr-ui",
+  "lastModifiedDate" : "2025-06-12T20:53:29Z",
+  "model" : {
+    "deploymentNodes" : [ {
+      "children" : [ {
+        "containerInstances" : [ {
+          "containerId" : "4",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "36",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "local_1_nginx"
+          },
+          "relationships" : [ {
+            "destinationId" : "37",
+            "id" : "38",
+            "linkedRelationshipId" : "19",
+            "sourceId" : "36"
+          }, {
+            "destinationId" : "39",
+            "id" : "41",
+            "linkedRelationshipId" : "17",
+            "sourceId" : "36"
+          } ],
+          "tags" : "Container Instance"
+        }, {
+          "containerId" : "6",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "37",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "local_1_api"
+          },
+          "relationships" : [ {
+            "destinationId" : "42",
+            "id" : "43",
+            "linkedRelationshipId" : "28",
+            "sourceId" : "37"
+          }, {
+            "description" : "AMQP Push",
+            "destinationId" : "44",
+            "id" : "45",
+            "sourceId" : "37",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Container Instance"
+        }, {
+          "containerId" : "5",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "39",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "local_1_ui"
+          },
+          "relationships" : [ {
+            "description" : "Receives Data From",
+            "destinationId" : "37",
+            "id" : "40",
+            "linkedRelationshipId" : "18",
+            "sourceId" : "39",
+            "technology" : "WebSocket"
+          } ],
+          "tags" : "Container Instance"
+        }, {
+          "containerId" : "7",
+          "deploymentGroups" : [ "Default" ],
+          "environment" : "Production",
+          "id" : "42",
+          "instanceId" : 1,
+          "properties" : {
+            "structurizr.dsl.identifier" : "local_1_db"
+          },
+          "tags" : "Container Instance"
+        } ],
+        "environment" : "Production",
+        "id" : "35",
+        "infrastructureNodes" : [ {
+          "environment" : "Production",
+          "id" : "44",
+          "name" : "AMQP Broker",
+          "properties" : {
+            "structurizr.dsl.identifier" : "local_1_rabbit"
+          },
+          "relationships" : [ {
+            "description" : "AMQP Pull",
+            "destinationId" : "37",
+            "id" : "46",
+            "sourceId" : "44",
+            "tags" : "Relationship"
+          } ],
+          "tags" : "Element,Infrastructure Node"
+        } ],
+        "instances" : "1",
+        "name" : "Docker",
+        "properties" : {
+          "structurizr.dsl.identifier" : "c8f930cc-f2d1-4846-9f9b-df4bd4541cb7"
+        },
+        "tags" : "Element,Deployment Node"
+      } ],
+      "environment" : "Production",
+      "id" : "34",
+      "instances" : "1",
+      "name" : "Local Terminal 1",
+      "properties" : {
+        "structurizr.dsl.identifier" : "local_node_1"
+      },
+      "tags" : "Element,Deployment Node"
+    }, {
+      "containerInstances" : [ {
+        "containerId" : "8",
+        "deploymentGroups" : [ "Default" ],
+        "environment" : "Production",
+        "id" : "49",
+        "instanceId" : 1,
+        "properties" : {
+          "structurizr.dsl.identifier" : "global_1_nginx"
+        },
+        "relationships" : [ {
+          "destinationId" : "50",
+          "id" : "51",
+          "linkedRelationshipId" : "20",
+          "sourceId" : "49"
+        }, {
+          "destinationId" : "52",
+          "id" : "53",
+          "linkedRelationshipId" : "21",
+          "sourceId" : "49"
+        } ],
+        "tags" : "Container Instance"
+      }, {
+        "containerId" : "10",
+        "deploymentGroups" : [ "Default" ],
+        "environment" : "Production",
+        "id" : "50",
+        "instanceId" : 1,
+        "properties" : {
+          "structurizr.dsl.identifier" : "global_1_api"
+        },
+        "relationships" : [ {
+          "destinationId" : "54",
+          "id" : "55",
+          "linkedRelationshipId" : "29",
+          "sourceId" : "50"
+        }, {
+          "description" : "AMQP push",
+          "destinationId" : "48",
+          "id" : "56",
+          "sourceId" : "50",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Container Instance"
+      }, {
+        "containerId" : "9",
+        "deploymentGroups" : [ "Default" ],
+        "environment" : "Production",
+        "id" : "52",
+        "instanceId" : 1,
+        "properties" : {
+          "structurizr.dsl.identifier" : "global_1_ui"
+        },
+        "tags" : "Container Instance"
+      }, {
+        "containerId" : "11",
+        "deploymentGroups" : [ "Default" ],
+        "environment" : "Production",
+        "id" : "54",
+        "instanceId" : 1,
+        "properties" : {
+          "structurizr.dsl.identifier" : "global_1_db"
+        },
+        "tags" : "Container Instance"
+      } ],
+      "environment" : "Production",
+      "id" : "47",
+      "infrastructureNodes" : [ {
+        "environment" : "Production",
+        "id" : "48",
+        "name" : "AMQP Broker",
+        "properties" : {
+          "structurizr.dsl.identifier" : "global_1_rabbit"
+        },
+        "relationships" : [ {
+          "description" : "AMQP pull",
+          "destinationId" : "50",
+          "id" : "57",
+          "sourceId" : "48",
+          "tags" : "Relationship"
+        }, {
+          "description" : "AMQP Shovel",
+          "destinationId" : "44",
+          "id" : "58",
+          "sourceId" : "48",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Infrastructure Node"
+      } ],
+      "instances" : "1",
+      "name" : "Nympsfield Compute Cluster",
+      "properties" : {
+        "structurizr.dsl.identifier" : "global_node_1"
+      },
+      "tags" : "Element,Deployment Node"
+    } ],
+    "people" : [ {
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "User",
+      "properties" : {
+        "structurizr.dsl.identifier" : "user"
+      },
+      "relationships" : [ {
+        "description" : "Uses",
+        "destinationId" : "4",
+        "id" : "30",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Uses",
+        "destinationId" : "3",
+        "id" : "31",
+        "linkedRelationshipId" : "30",
+        "sourceId" : "1"
+      } ],
+      "tags" : "Element,Person,Persona"
+    }, {
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "SysAdmin",
+      "properties" : {
+        "structurizr.dsl.identifier" : "admin"
+      },
+      "relationships" : [ {
+        "description" : "Accesses administration functions",
+        "destinationId" : "8",
+        "id" : "32",
+        "sourceId" : "2",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Accesses administration functions",
+        "destinationId" : "3",
+        "id" : "33",
+        "linkedRelationshipId" : "32",
+        "sourceId" : "2"
+      } ],
+      "tags" : "Element,Person,Persona"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "documentation" : { },
+        "group" : "Local Service",
+        "id" : "4",
+        "name" : "reverse proxy",
+        "properties" : {
+          "structurizr.dsl.identifier" : "local_nginx"
+        },
+        "relationships" : [ {
+          "destinationId" : "5",
+          "id" : "17",
+          "sourceId" : "4",
+          "tags" : "Relationship"
+        }, {
+          "destinationId" : "6",
+          "id" : "19",
+          "sourceId" : "4",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "description" : "Vue",
+        "documentation" : { },
+        "group" : "Local Service",
+        "id" : "5",
+        "name" : "Front End",
+        "properties" : {
+          "structurizr.dsl.identifier" : "local_ui"
+        },
+        "relationships" : [ {
+          "description" : "Receives Data From",
+          "destinationId" : "6",
+          "id" : "18",
+          "sourceId" : "5",
+          "tags" : "Relationship",
+          "technology" : "WebSocket"
+        } ],
+        "tags" : "Element,Container,frontend"
+      }, {
+        "description" : "Python FastAPI",
+        "documentation" : { },
+        "group" : "Local Service",
+        "id" : "6",
+        "name" : "Local Service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "local_api"
+        },
+        "relationships" : [ {
+          "destinationId" : "12",
+          "id" : "22",
+          "sourceId" : "6",
+          "tags" : "Relationship"
+        }, {
+          "destinationId" : "13",
+          "id" : "23",
+          "sourceId" : "6",
+          "tags" : "Relationship"
+        }, {
+          "destinationId" : "7",
+          "id" : "28",
+          "sourceId" : "6",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "documentation" : { },
+        "group" : "Local Service",
+        "id" : "7",
+        "name" : "Local Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "db_local"
+        },
+        "tags" : "Element,Container,database"
+      }, {
+        "documentation" : { },
+        "group" : "Global Service",
+        "id" : "8",
+        "name" : "global reverse proxy",
+        "properties" : {
+          "structurizr.dsl.identifier" : "global_nginx"
+        },
+        "relationships" : [ {
+          "destinationId" : "10",
+          "id" : "20",
+          "sourceId" : "8",
+          "tags" : "Relationship"
+        }, {
+          "destinationId" : "9",
+          "id" : "21",
+          "sourceId" : "8",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "description" : "Vue",
+        "documentation" : { },
+        "group" : "Global Service",
+        "id" : "9",
+        "name" : "Global UI",
+        "properties" : {
+          "structurizr.dsl.identifier" : "global_ui"
+        },
+        "tags" : "Element,Container"
+      }, {
+        "description" : "Python FastAPI",
+        "documentation" : { },
+        "group" : "Global Service",
+        "id" : "10",
+        "name" : "Global Service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "global_api"
+        },
+        "relationships" : [ {
+          "destinationId" : "14",
+          "id" : "27",
+          "sourceId" : "10",
+          "tags" : "Relationship"
+        }, {
+          "destinationId" : "11",
+          "id" : "29",
+          "sourceId" : "10",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container"
+      }, {
+        "documentation" : { },
+        "group" : "Global Service",
+        "id" : "11",
+        "name" : "Global Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "db_global"
+        },
+        "tags" : "Element,Container,database"
+      }, {
+        "description" : "AMQP Queue",
+        "documentation" : { },
+        "group" : "AMQP Queues",
+        "id" : "12",
+        "name" : "Inbound Message",
+        "properties" : {
+          "structurizr.dsl.identifier" : "q_inbound_messages"
+        },
+        "relationships" : [ {
+          "destinationId" : "10",
+          "id" : "26",
+          "sourceId" : "12",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container,queue"
+      }, {
+        "description" : "AMQP Queue",
+        "documentation" : { },
+        "group" : "AMQP Queues",
+        "id" : "13",
+        "name" : "Inbound Logbook",
+        "properties" : {
+          "structurizr.dsl.identifier" : "q_inbound_logmessages"
+        },
+        "relationships" : [ {
+          "destinationId" : "10",
+          "id" : "25",
+          "sourceId" : "13",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container,queue"
+      }, {
+        "description" : "AMQP Queue",
+        "documentation" : { },
+        "group" : "AMQP Queues",
+        "id" : "14",
+        "name" : "Outbound Message",
+        "properties" : {
+          "structurizr.dsl.identifier" : "q_outbound_messages_callsign"
+        },
+        "relationships" : [ {
+          "destinationId" : "6",
+          "id" : "24",
+          "sourceId" : "14",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container,queue"
+      }, {
+        "description" : "AMQP Queue",
+        "documentation" : { },
+        "group" : "AMQP Queues",
+        "id" : "15",
+        "name" : "Outbound Global Sync",
+        "properties" : {
+          "structurizr.dsl.identifier" : "q_outbound_global_sync"
+        },
+        "tags" : "Element,Container,queue"
+      }, {
+        "description" : "AMQP Queue",
+        "documentation" : { },
+        "group" : "AMQP Queues",
+        "id" : "16",
+        "name" : "Inbound Global Sync",
+        "properties" : {
+          "structurizr.dsl.identifier" : "q_inbound_global_sync"
+        },
+        "tags" : "Element,Container,queue"
+      } ],
+      "documentation" : { },
+      "id" : "3",
+      "location" : "Unspecified",
+      "name" : "GlosNET Terminal",
+      "properties" : {
+        "structurizr.dsl.identifier" : "glosnet"
+      },
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "GlosNET Terminal",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlICJHbG9zTkVUIFRlcm1pbmFsIiAiQSBsb3cgbGF0ZW5jeSwgcmFkaW8gbG9nZ2luZyBhbmQgbWVzc2FnaW5nIHNvbHV0aW9uIiB7CgkKCSFkb2NzIGRvY3MKCQoJIWFkcnMgYWRycwoJCgltb2RlbCB7CgkJCgkJIyBQZXJzb25hcwoJCXVzZXIgPSBwZXJzb24gIlVzZXIiIHsKCQkJdGFncyAiUGVyc29uYSIKCQl9CgkJCgkJYWRtaW4gPSBwZXJzb24gIlN5c0FkbWluIiB7CgkJCXRhZ3MgIlBlcnNvbmEiCgkJfQoJCQoJCSMgU3lzdGVtcwoJCQoJCWdsb3NuZXQgPSBzb2Z0d2FyZVN5c3RlbSAiR2xvc05FVCBUZXJtaW5hbCIgewoJCQkKCQkJbG9jYWwgPSBncm91cCAiTG9jYWwgU2VydmljZSIgewoJCQkJbG9jYWxfbmdpbnggPSBjb250YWluZXIgInJldmVyc2UgcHJveHkiCgkJCQlsb2NhbF91aSA9IGNvbnRhaW5lciAiRnJvbnQgRW5kIiAiVnVlIiB7CgkJCQkJdGFncyAiZnJvbnRlbmQiCgkJCQl9CgkJCQlsb2NhbF9hcGkgPSBjb250YWluZXIgIkxvY2FsIFNlcnZpY2UiICJQeXRob24gRmFzdEFQSSIKCQkJCWRiX2xvY2FsID0gY29udGFpbmVyICJMb2NhbCBEYXRhYmFzZSIgewoJCQkJCXRhZ3MgImRhdGFiYXNlIgoJCQkJfQoJCQl9CgkJCQoJCQlnbG9iYWwgPSBncm91cCAiR2xvYmFsIFNlcnZpY2UiIHsKCQkJCWdsb2JhbF9uZ2lueCA9IGNvbnRhaW5lciAiZ2xvYmFsIHJldmVyc2UgcHJveHkiCgkJCQlnbG9iYWxfdWkgPSBjb250YWluZXIgIkdsb2JhbCBVSSIgIlZ1ZSIKCQkJCWdsb2JhbF9hcGkgPSBjb250YWluZXIgIkdsb2JhbCBTZXJ2aWNlIiAiUHl0aG9uIEZhc3RBUEkiCgkJCQlkYl9nbG9iYWwgPSBjb250YWluZXIgIkdsb2JhbCBEYXRhYmFzZSIgewoJCQkJCXRhZ3MgImRhdGFiYXNlIgoJCQkJfQoJCQl9CgkJCQoJCQlxdWV1ZXMgPSBncm91cCAiQU1RUCBRdWV1ZXMiIHsKCQkJCXFfaW5ib3VuZF9tZXNzYWdlcyA9IGNvbnRhaW5lciAiSW5ib3VuZCBNZXNzYWdlIiAiQU1RUCBRdWV1ZSIgewoJCQkJCXRhZ3MgInF1ZXVlIgoJCQkJfQoJCQkJcV9pbmJvdW5kX2xvZ21lc3NhZ2VzID0gY29udGFpbmVyICJJbmJvdW5kIExvZ2Jvb2siICJBTVFQIFF1ZXVlInsKCQkJCQl0YWdzICJxdWV1ZSIKCQkJCX0KCQkJCXFfb3V0Ym91bmRfbWVzc2FnZXNfY2FsbHNpZ24gPSBjb250YWluZXIgIk91dGJvdW5kIE1lc3NhZ2UiICJBTVFQIFF1ZXVlIiB7CgkJCQkJdGFncyAicXVldWUiCgkJCQl9CgkJCQlxX291dGJvdW5kX2dsb2JhbF9zeW5jID0gY29udGFpbmVyICJPdXRib3VuZCBHbG9iYWwgU3luYyIgIkFNUVAgUXVldWUiIHsKCQkJCQl0YWdzICJxdWV1ZSIKCQkJCX0KCQkJCXFfaW5ib3VuZF9nbG9iYWxfc3luYyA9IGNvbnRhaW5lciAiSW5ib3VuZCBHbG9iYWwgU3luYyIgIkFNUVAgUXVldWUiIHsKCQkJCQl0YWdzICJxdWV1ZSIKCQkJCX0KCQkJfQoJCQkKCQkJbG9jYWxfbmdpbnggLT4gbG9jYWxfdWkKCQkJbG9jYWxfdWkgLT4gbG9jYWxfYXBpICJSZWNlaXZlcyBEYXRhIEZyb20iICJXZWJTb2NrZXQiCgkJCWxvY2FsX25naW54IC0+IGxvY2FsX2FwaQoJCQlnbG9iYWxfbmdpbnggLT4gZ2xvYmFsX2FwaQoJCQlnbG9iYWxfbmdpbnggLT4gZ2xvYmFsX3VpCgkJCQoJCQlsb2NhbF9hcGkgLT4gcV9pbmJvdW5kX21lc3NhZ2VzCgkJCWxvY2FsX2FwaSAtPiBxX2luYm91bmRfbG9nbWVzc2FnZXMKCQkJcV9vdXRib3VuZF9tZXNzYWdlc19jYWxsc2lnbiAtPiBsb2NhbF9hcGkKCQkJCgkJCXFfaW5ib3VuZF9sb2dtZXNzYWdlcyAtPiBnbG9iYWxfYXBpCgkJCXFfaW5ib3VuZF9tZXNzYWdlcyAtPiBnbG9iYWxfYXBpCgkJCWdsb2JhbF9hcGkgLT4gcV9vdXRib3VuZF9tZXNzYWdlc19jYWxsc2lnbgoJCQkKCQkJbG9jYWxfYXBpIC0+IGRiX2xvY2FsCgkJCWdsb2JhbF9hcGkgLT4gZGJfZ2xvYmFsCgkJCQoJCQkKCQkJCgkJfQoJCQoJCXVzZXIgLT4gbG9jYWxfbmdpbnggIlVzZXMiCgkJYWRtaW4gLT4gZ2xvYmFsX25naW54ICJBY2Nlc3NlcyBhZG1pbmlzdHJhdGlvbiBmdW5jdGlvbnMiCgkJCgkJIyBEZXBsb3ltZW50cwoJCXByb2R1Y3Rpb24gPSBkZXBsb3ltZW50RW52aXJvbm1lbnQgIlByb2R1Y3Rpb24iIHsKCQkJCgkJCWxvY2FsX25vZGVfMSA9IGRlcGxveW1lbnROb2RlICJMb2NhbCBUZXJtaW5hbCAxIiB7CgkJCQkKCQkJCWRlcGxveW1lbnROb2RlICJEb2NrZXIiIHsKCQkJCQkKCQkJCQlsb2NhbF8xX25naW54ID0gY29udGFpbmVySW5zdGFuY2UgbG9jYWxfbmdpbngKCQkJCQlsb2NhbF8xX2FwaSA9IGNvbnRhaW5lckluc3RhbmNlIGxvY2FsX2FwaQoJCQkJCWxvY2FsXzFfdWkgPSBjb250YWluZXJJbnN0YW5jZSBsb2NhbF91aQoJCQkJCWxvY2FsXzFfZGIgPSBjb250YWluZXJJbnN0YW5jZSBkYl9sb2NhbAoJCQkJCQoJCQkJCWxvY2FsXzFfcmFiYml0ID0gaW5mcmFzdHJ1Y3R1cmVOb2RlICJBTVFQIEJyb2tlciIKCQkJCQlsb2NhbF8xX2FwaSAtPiBsb2NhbF8xX3JhYmJpdCAiQU1RUCBQdXNoIgoJCQkJCWxvY2FsXzFfcmFiYml0IC0+IGxvY2FsXzFfYXBpICJBTVFQIFB1bGwiCgkJCQl9CgkJCQkKCQkJfQoJCQkKCQkJZ2xvYmFsX25vZGVfMSA9IGRlcGxveW1lbnROb2RlICJOeW1wc2ZpZWxkIENvbXB1dGUgQ2x1c3RlciIgewoJCQkJCgkJCQlnbG9iYWxfMV9yYWJiaXQgPSBpbmZyYXN0cnVjdHVyZU5vZGUgIkFNUVAgQnJva2VyIgoJCQkJZ2xvYmFsXzFfbmdpbnggPSBjb250YWluZXJJbnN0YW5jZSBnbG9iYWxfbmdpbngKCQkJCWdsb2JhbF8xX2FwaSA9IGNvbnRhaW5lckluc3RhbmNlIGdsb2JhbF9hcGkKCQkJCWdsb2JhbF8xX3VpID0gY29udGFpbmVySW5zdGFuY2UgZ2xvYmFsX3VpCgkJCQlnbG9iYWxfMV9kYiA9IGNvbnRhaW5lckluc3RhbmNlIGRiX2dsb2JhbAoJCQkJCgkJCQlnbG9iYWxfMV9hcGkgLT4gZ2xvYmFsXzFfcmFiYml0ICJBTVFQIHB1c2giCgkJCQlnbG9iYWxfMV9yYWJiaXQgLT4gZ2xvYmFsXzFfYXBpICJBTVFQIHB1bGwiCgkJCQkKCQkJfQoJCQkKCQkJZ2xvYmFsXzFfcmFiYml0IC0+IGxvY2FsXzFfcmFiYml0ICJBTVFQIFNob3ZlbCIKCQl9CgkJCgl9CgkKCXZpZXdzIHsKCQkKCQlzeXN0ZW1MYW5kc2NhcGUgIlN5c3RlbUxhbmRzY2FwZSIgewoJCQlpbmNsdWRlICoKCQkJYXV0b2xheW91dCBscgoJCX0KCQkKCQlzeXN0ZW1Db250ZXh0IGdsb3NuZXQgewoJCQlpbmNsdWRlICoKCQkJYXV0b2xheW91dCBscgoJCX0KCQkKCQljb250YWluZXIgZ2xvc25ldCB7CgkJCWluY2x1ZGUgKgoJCQlhdXRvbGF5b3V0IGxyCgkJfQoJCQoJCWRlcGxveW1lbnQgKiBwcm9kdWN0aW9uIHsKCQkJaW5jbHVkZSAqCgkJCWF1dG9sYXlvdXQgbHIKCQl9CgkJCgkJc3R5bGVzIHsKCQkJCgkJCWVsZW1lbnQgImZyb250ZW5kIiB7CgkJCQlzaGFwZSBXZWJCcm93c2VyCgkJCX0KCQkJCgkJCWVsZW1lbnQgIm1pY3Jvc2VydmljZSIgewoJCQkJc2hhcGUgSGV4YWdvbgoJCQl9CgkJCQoJCQllbGVtZW50ICJkYXRhYmFzZSIgewoJCQkJc2hhcGUgQ3lsaW5kZXIKCQkJfQoJCQkKCQkJZWxlbWVudCAicXVldWUiIHsKCQkJCXNoYXBlIFBpcGUKCQkJfQoJCQkKCQl9CgkJCgkJdGhlbWVzIGRlZmF1bHQgaHR0cHM6Ly9zdGF0aWMuc3RydWN0dXJpenIuY29tL3RoZW1lcy9hbWF6b24td2ViLXNlcnZpY2VzLTIwMjMuMDEuMzEvdGhlbWUuanNvbiBodHRwczovL3N0YXRpYy5zdHJ1Y3R1cml6ci5jb20vdGhlbWVzL2t1YmVybmV0ZXMtdjAuMy90aGVtZS5qc29uCgkJCgl9CgkKfQ=="
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "Container-001",
+      "metadataSymbols" : "SquareBrackets",
+      "styles" : {
+        "elements" : [ {
+          "shape" : "WebBrowser",
+          "tag" : "frontend"
+        }, {
+          "shape" : "Hexagon",
+          "tag" : "microservice"
+        }, {
+          "shape" : "Cylinder",
+          "tag" : "database"
+        }, {
+          "shape" : "Pipe",
+          "tag" : "queue"
+        } ]
+      },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/default/theme.json", "https://static.structurizr.com/themes/amazon-web-services-2023.01.31/theme.json", "https://static.structurizr.com/themes/kubernetes-v0.3/theme.json" ]
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 5832,
+        "width" : 5390
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 199,
+        "y" : 205
+      }, {
+        "id" : "2",
+        "x" : 2449,
+        "y" : 5197
+      }, {
+        "id" : "4",
+        "x" : 949,
+        "y" : 205
+      }, {
+        "id" : "5",
+        "x" : 1699,
+        "y" : 359
+      }, {
+        "id" : "6",
+        "x" : 2449,
+        "y" : 359
+      }, {
+        "id" : "7",
+        "x" : 3199,
+        "y" : 359
+      }, {
+        "id" : "8",
+        "x" : 3199,
+        "y" : 4584
+      }, {
+        "id" : "9",
+        "x" : 3949,
+        "y" : 4584
+      }, {
+        "id" : "10",
+        "x" : 3949,
+        "y" : 3984
+      }, {
+        "id" : "11",
+        "x" : 4699,
+        "y" : 3984
+      }, {
+        "id" : "12",
+        "x" : 3199,
+        "y" : 972
+      }, {
+        "id" : "13",
+        "x" : 3199,
+        "y" : 1572
+      }, {
+        "id" : "14",
+        "x" : 3199,
+        "y" : 2172
+      }, {
+        "id" : "15",
+        "x" : 3199,
+        "y" : 2772
+      }, {
+        "id" : "16",
+        "x" : 3199,
+        "y" : 3372
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "generatedKey" : true,
+      "key" : "Container-001",
+      "order" : 3,
+      "relationships" : [ {
+        "id" : "17"
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "19",
+        "vertices" : [ {
+          "x" : 1699,
+          "y" : 209
+        }, {
+          "x" : 2149,
+          "y" : 209
+        } ]
+      }, {
+        "id" : "20"
+      }, {
+        "id" : "21"
+      }, {
+        "id" : "22"
+      }, {
+        "id" : "23",
+        "vertices" : [ {
+          "x" : 3095,
+          "y" : 1422
+        } ]
+      }, {
+        "id" : "24",
+        "vertices" : [ {
+          "x" : 3095,
+          "y" : 2022
+        } ]
+      }, {
+        "id" : "25",
+        "vertices" : [ {
+          "x" : 3753,
+          "y" : 2022
+        } ]
+      }, {
+        "id" : "26",
+        "vertices" : [ {
+          "x" : 3753,
+          "y" : 1422
+        } ]
+      }, {
+        "id" : "27",
+        "vertices" : [ {
+          "x" : 3753,
+          "y" : 2622
+        } ]
+      }, {
+        "id" : "28"
+      }, {
+        "id" : "29"
+      }, {
+        "id" : "30"
+      }, {
+        "id" : "32"
+      } ],
+      "softwareSystemId" : "3"
+    } ],
+    "deploymentViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 2677,
+        "width" : 3910
+      },
+      "elements" : [ {
+        "id" : "34",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "35",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "36",
+        "x" : 240,
+        "y" : 651
+      }, {
+        "id" : "37",
+        "x" : 1740,
+        "y" : 805
+      }, {
+        "id" : "39",
+        "x" : 990,
+        "y" : 426
+      }, {
+        "id" : "42",
+        "x" : 2490,
+        "y" : 205
+      }, {
+        "id" : "44",
+        "x" : 2490,
+        "y" : 805
+      }, {
+        "id" : "47",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "48",
+        "x" : 1740,
+        "y" : 1451
+      }, {
+        "id" : "49",
+        "x" : 1740,
+        "y" : 2051
+      }, {
+        "id" : "50",
+        "x" : 2490,
+        "y" : 1451
+      }, {
+        "id" : "52",
+        "x" : 2490,
+        "y" : 2051
+      }, {
+        "id" : "54",
+        "x" : 3240,
+        "y" : 1451
+      } ],
+      "environment" : "Production",
+      "generatedKey" : true,
+      "key" : "Deployment-001",
+      "order" : 4,
+      "relationships" : [ {
+        "id" : "38",
+        "vertices" : [ {
+          "x" : 990,
+          "y" : 876
+        } ]
+      }, {
+        "id" : "40"
+      }, {
+        "id" : "41"
+      }, {
+        "id" : "43"
+      }, {
+        "id" : "45",
+        "vertices" : [ {
+          "x" : 2340,
+          "y" : 1105
+        } ]
+      }, {
+        "id" : "46",
+        "vertices" : [ {
+          "x" : 2340,
+          "y" : 805
+        } ]
+      }, {
+        "id" : "51"
+      }, {
+        "id" : "53"
+      }, {
+        "id" : "55"
+      }, {
+        "id" : "56",
+        "vertices" : [ {
+          "x" : 2340,
+          "y" : 1451
+        } ]
+      }, {
+        "id" : "57",
+        "vertices" : [ {
+          "x" : 2340,
+          "y" : 1751
+        } ]
+      }, {
+        "id" : "58"
+      } ]
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 1400,
+        "width" : 1600
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 200,
+        "y" : 165
+      }, {
+        "id" : "2",
+        "x" : 200,
+        "y" : 765
+      }, {
+        "id" : "3",
+        "x" : 950,
+        "y" : 465
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "generatedKey" : true,
+      "key" : "SystemContext-001",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "31"
+      }, {
+        "id" : "33"
+      } ],
+      "softwareSystemId" : "3"
+    } ],
+    "systemLandscapeViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 1400,
+        "width" : 1600
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 200,
+        "y" : 165
+      }, {
+        "id" : "2",
+        "x" : 200,
+        "y" : 765
+      }, {
+        "id" : "3",
+        "x" : 950,
+        "y" : 465
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "SystemLandscape",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "31"
+      }, {
+        "id" : "33"
+      } ]
+    } ]
+  }
+}
