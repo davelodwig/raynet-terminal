@@ -19,6 +19,8 @@ glosnet = softwareSystem "GlosNET Terminal" {
 		db_global = container "Global Database" {
 			tags "database"
 		}
+		
+		global_rf_sync = container "Global RF Sync"s
 	}
 	
 	queues = group "AMQP Queues" {
