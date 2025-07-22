@@ -1,23 +1,51 @@
-name: Update Structurizr Diagrams
+name: Deploy static content to Github Pages
 
 on:
-    pull_request:
-        paths:
-        - 'docs/workspace.dsl' # This setting will have the action trigger only if certain file changes. Set the location of your DSL.
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 concurrency:
-  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-  cancel-in-progress: true
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-    update-diagrams:
-        runs-on: ubuntu-latest
-        container: ghcr.io/sebastienfi/structurizr-cli-with-bonus:latest
-        permissions: 
-          contents: write # Allow to work with the contents of the repository, including git push.
-        steps:
-        - uses: sebastienfi/structurizr-gen-images@v1
-          with:
-            repo-token: ${{ secrets.GITHUB_TOKEN }} # This token will be used by the action to perform git pull, git push, pr read, pr comment, pr comment edit, pr comment reaction.
-            workspace-path: 'docs/workspace.dsl' # This setting will have the action generate images from this DSL. Set the location of your DSL.
-            output-path: 'docs/diagrams/' # The output folder for generated images.
+  build:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/avisi-cloud/structurizr-site-generatr
+      options: --user root
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Create site
+        run: |
+          /opt/structurizr-site-generatr/bin/structurizr-site-generatr generate-site -w diagram.dsl
+      - uses: actions/upload-artifact@v3
+        with:
+          name: website
+          path: build/site
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: website
+          path: build/site
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: "build/site"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
