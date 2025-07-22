@@ -1,7 +1,5 @@
 workspace "GlosNET Terminal" "A low latency, radio logging and messaging solution" {
 	
-	!docs docs
-	
 	!adrs adrs
 	
 	model {
